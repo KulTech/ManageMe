@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
@@ -12,19 +12,45 @@
 
     <!-- ManageMeMobile references -->
     <link href="css/index.css" rel="stylesheet" />
-  
+    <link href="css/Content/bootstrap.min.css" rel="stylesheet" />  
+    
 </head>
 <body>
-    <p>ManageMe Receipt Scan</p>
-    <ul>
-        <li>Date:<input type="date" id="txtReceiptDate" /></li>
-        <li>Receipt?<input type="checkbox" id="chIsReceipt" /></li>
-    </ul>
-    <input type="button" value="Take Picture" id="btnTakePicture"/>
-    <div id="pictureDisplayed"></div>
-    <!-- Cordova reference, this is added to your app when it's built. -->
-    <script src="cordova.js"></script>
-    <script src="scripts/platformOverrides.js"></script>
-    <script src="scripts/appBundle.js"></script>
+    <div class="container col-xs-10; col-xs-offset-2">
+    <h2>ManageMe Receipt Scan</h2>
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+      
+        <ul>
+            <li>Date: <input type="date" id="txtReceiptDate" /></li>
+            <li>Receipt:<input type="checkbox" id="chIsReceipt" /></li>
+        </ul>
+        <div class="row">
+            <div class="col-xs-6"><input type="button" value="Take Picture" id="btnTakePicture" /></div>
+            <div class="col-xs-6"><input type="button" value="Clear Picture" id="btnClearPicture" /></div>
+        </div>
+
+        <div id="pictureDisplayed"></div>
+        </div>
+        <!-- Cordova reference, this is added to your app when it's built. -->
+        <script src="cordova.js"></script>
+        <script src="scripts/platformOverrides.js"></script>
+        <script src="scripts/appBundle.js"></script>
+        <script src="scripts/bootstrap.min.js"></script>
+        <script src="scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
 </body>
 </html>

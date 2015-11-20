@@ -15,10 +15,17 @@ var ManageMeMobile;
             // Handle the Cordova pause and resume events
             document.addEventListener('pause', onPause, false);
             document.addEventListener('resume', onResume, false);
-            // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
             document.getElementById("btnTakePicture").onclick = function () {
-                alert("hello");
-            }
+                navigator.camera.getPicture(function (imageUri) {
+                    var lastphoto = document.getElementById("pictureDisplayed");
+                    lastphoto.innerHTML = "<img src='" + imageUri + "', style = 'width:75%;'/>";
+                }, null, null);
+            };
+            document.getElementById("btnClearPicture").onclick = function () {
+                var lastphoto = document.getElementById("pictureDisplayed");
+                lastphoto.innerHTML = "";
+            };
+            // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         }
         function onPause() {
             // TODO: This application has been suspended. Save application state here.
