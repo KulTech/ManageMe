@@ -1,0 +1,35 @@
+{
+  "userSecretsId": "aspnet5-testApplication-20151123100101",
+  "version": "1.0.0-*",
+  "description": "testApplication Console Application",
+  "authors": [ "Administrator" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "dependencies": {
+  },
+
+  "commands": {
+    "testApplication": "testApplication"
+  },
+
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+        "ManageMeMobileService": "1.0.0-*"
+
+
+      }
+    },
+    "dnxcore50": {
+      "dependencies": {
+        "System.Collections": "4.0.10-beta-23019",
+        "System.Console": "4.0.0-beta-23019",
+        "System.Linq": "4.0.0-beta-23019",
+        "System.Threading": "4.0.10-beta-23019",
+        "Microsoft.CSharp": "4.0.0-beta-23019"
+      }
+    }
+  }
+}
