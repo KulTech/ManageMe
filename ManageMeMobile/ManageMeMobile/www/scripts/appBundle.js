@@ -26,23 +26,22 @@ var ManageMeMobile;
                 lastphoto.innerHTML = "";
             };
             document.getElementById("btnSave").onclick = function () {
-                var document = {
+                var d = {
                     Title: 'testtitle',
                     Path: 'testpath',
                     Notes: 'testnotes'
                 };
-                alert("world");
+                $("#pictureDisplayed").html(JSON.stringify(d));
                 $.ajax({
                     url: 'http://managememobileservice.azurewebsites.net/api/Doc',
                     type: 'post',
-                    data: JSON.stringify(document),
+                    data: JSON.stringify(d),
                     contentType: "application/json; charset=utf-8",
                     traditional: true,
                     success: function (data) {
                         $('#lastphoto').html(data.msg);
                     },
                 });
-                $('#lastphoto').html("haaa");
             };
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         }
