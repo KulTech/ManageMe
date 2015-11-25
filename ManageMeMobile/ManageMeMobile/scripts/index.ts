@@ -26,21 +26,26 @@ module ManageMeMobile {
             }
             
             document.getElementById("btnSave").onclick = function () {
-                alert("world"); 
+              
                 var document = {
                     Title: 'testtitle',
                     Path: 'testpath',
                     Notes: 'testnotes'
-                }
+                }; 
+                alert("world");
+               
                 $.ajax({
                     url: 'http://managememobileservice.azurewebsites.net/api/Doc',
                     type: 'post',
-                    dataType: 'json',
+                    data: JSON.stringify(document),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true, 
                     success: function (data) {
                         $('#lastphoto').html(data.msg);
                     },
-                    data: document
+                    
                 });
+                $('#lastphoto').html("haaa"); 
             }
             
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
