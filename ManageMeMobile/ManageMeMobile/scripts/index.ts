@@ -24,6 +24,25 @@ module ManageMeMobile {
                 var lastphoto = document.getElementById("pictureDisplayed");
                 lastphoto.innerHTML = ""; 
             }
+            
+            document.getElementById("btnSave").onclick = function () {
+                alert("world"); 
+                var document = {
+                    Title: 'testtitle',
+                    Path: 'testpath',
+                    Notes: 'testnotes'
+                }
+                $.ajax({
+                    url: 'http://managememobileservice.azurewebsites.net/api/Doc',
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#lastphoto').html(data.msg);
+                    },
+                    data: document
+                });
+            }
+            
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         }
 
