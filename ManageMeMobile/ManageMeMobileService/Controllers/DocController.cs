@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ManageMeMobileService;
+using ManageMeMobileService.Helper;
 
 namespace ManageMeMobileService.Controllers
 {
@@ -72,20 +73,35 @@ namespace ManageMeMobileService.Controllers
 
         // POST: api/Doc
         [ResponseType(typeof(Documents))]
-        public IHttpActionResult PostDocuments(Documents documents)
+        public IHttpActionResult PostDocuments(DocumentsViewModel documents)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Documents.Add(documents);
-
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+            Documents d = new Documents();
+            //var a = new AppLog() { logDate = DateTime.Now, msg = "before save" };
+            //db.AppLog.Add(a);
+            //db.SaveChanges();
             try
             {
-                db.SaveChanges();
+           
+            d.Title = documents.Title;
+            d.Notes = documents.Notes;
+            d.Date = documents.Date;
+            string base64 = documents.fileContent.Replace("data:image/jpeg;base64,","");// load base 64 code to this variable from js 
+            Byte[] bitmapData = new Byte[base64.Length];
+            bitmapData = Convert.FromBase64String(FixBase64Helper.FixBase64ForImage(base64));
+            d.fileContent =bitmapData;
+                //var w = new AppLog() { logDate = DateTime.Now, msg = "inside save" };
+                //db.AppLog.Add(w);
+                //db.SaveChanges();
+
+                db.Documents.Add(d);
+                db.SaveChanges(); 
+
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
                 if (DocumentsExists(documents.Id))
                 {
@@ -93,11 +109,19 @@ namespace ManageMeMobileService.Controllers
                 }
                 else
                 {
-                    throw;
+                    db.Documents.Remove(d); 
+                    var log = new AppLog() { logDate = DateTime.Now, msg = ex.Message };
+                    db.AppLog.Add(log);
+                    db.SaveChanges();
+                throw; 
+                    //return Conflict(); 
                 }
             }
-
+            //var b = new AppLog() { logDate = DateTime.Now, msg = "after save" };
+            //db.AppLog.Add(b);
+            //db.SaveChanges();
             return CreatedAtRoute("DefaultApi", new { id = documents.Id }, documents);
+           
         }
 
         // DELETE: api/Doc/5

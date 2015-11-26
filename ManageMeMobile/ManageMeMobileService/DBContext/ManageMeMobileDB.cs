@@ -13,6 +13,7 @@ namespace ManageMeMobileService
         }
 
         public virtual DbSet<Documents> Documents { get; set; }
+        public virtual DbSet<AppLog> AppLog { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -24,6 +25,9 @@ namespace ManageMeMobileService
             modelBuilder.Entity<database_firewall_rules>()
                 .Property(e => e.end_ip_address)
                 .IsUnicode(false);
+            modelBuilder.Entity<AppLog>()
+               .Property(e => e.msg)
+               .IsUnicode(false);
         }
     }
 }
