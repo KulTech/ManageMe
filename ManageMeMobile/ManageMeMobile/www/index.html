@@ -13,37 +13,46 @@
     <!-- ManageMeMobile references -->
     <link href="css/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+    <script src="scripts/appBundle.js"></script>
     
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/jquery.validate.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+ 
     
 </head>
 <body>
-    <div class="container col-xs-10; col-xs-offset-2">
+    <form id="form1">
+    <div class="container">
     <h2>ManageMe Receipt Scan</h2>
-    <div class="row">
-        <div>
-            <div class="col-xs-6"><input type="button" value="Save" id="btnSave" /></div>
+    
+        <div><input type="button" value="Save" id="btnSave" class="largebutton" /></div>
+        <div class="alert">*Record will be saved to remote database!</div>
+    
+     <div class="row">
+        <div class="col-xs-2">Date:</div>
+        <div class="col-xs-6"><input type="date" id="txtDate" required /></div>
+    </div>
+        <div class="row">
+            <div class=" col-xs-2">Title:</div>
+            <div class="col-xs-6"><input type="text" id="txtTitle" data-rule-required="true" /></div>
         </div>
-        <ul>
-            <li>Date: <input type="date" id="txtReceiptDate" /></li>
-            <li>Receipt:<input type="checkbox" id="chIsReceipt" /></li>
-        </ul>
+        <div class="row">
+            <div class="col-xs-2">Notes:</div>
+            <div class="col-xs-6"><textarea id="txtNotes" cols="30" rows="5"></textarea></div>
+        </div>
+           
         <div class="row">
             <div class="col-xs-6"><input type="button" value="Take Picture" id="btnTakePicture" /></div>
             <div class="col-xs-6"><input type="button" value="Clear Picture" id="btnClearPicture" /></div>
         </div>
 
         <div id="pictureDisplayed"></div>
-        </div>
-        <!-- Cordova reference, this is added to your app when it's built. -->
-        <script src="cordova.js"></script>
-        <script src="scripts/platformOverrides.js"></script>
-        <script src="scripts/appBundle.js"></script>
-        <script src="scripts/bootstrap.min.js"></script>
-        <script src="scripts/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
+       </div>
+        </form>
 </body>
+
 </html>

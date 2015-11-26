@@ -15,7 +15,7 @@ namespace testConsole
     {
         static void Main(string[] args)
         {
-            var d = new Documents() { Title = "test", Path = "test", Date = DateTime.Now.Date, Notes = "blab" };
+            var d = new Documents() { Title = "testnew", Date = DateTime.Now.Date, Notes = "blab" };
             HttpWebRequest nReq = (HttpWebRequest)WebRequest.Create(@"http://managememobileservice.azurewebsites.net/api/Doc");
            
             nReq.Method = "POST";

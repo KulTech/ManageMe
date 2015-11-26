@@ -14,8 +14,10 @@ module ManageMeMobile {
             // Handle the Cordova pause and resume events
             document.addEventListener('pause', onPause, false);
             document.addEventListener('resume', onResume, false);
+            var imageLocation = ""; 
             document.getElementById("btnTakePicture").onclick = function () {
                 navigator.camera.getPicture(function (imageUri) {
+                    imageLocation = imageUri; 
                     var lastphoto = document.getElementById("pictureDisplayed");
                     lastphoto.innerHTML = "<img src='" + imageUri + "', style = 'width:75%;'/>"; 
                 }, null, null)
@@ -25,28 +27,33 @@ module ManageMeMobile {
                 lastphoto.innerHTML = ""; 
             }
             
-            document.getElementById("btnSave").onclick = function () {
-              
+            $("#btnSave").click(function () { 
+                $("#form1").validate();
+                alert(imageLocation); 
                 var d = {
-                    Title: 'testtitle',
-                    Path: 'testpath',
-                    Notes: 'testnotes'
+                    Title: $('#txtTitle').val(),
+                    Notes: $('#txtNotes').val(),
+                    Date: $('#txtDate').val()
                 };
-                $("#pictureDisplayed").html(JSON.stringify(d));
-               
+
                 $.ajax({
                     url: 'http://managememobileservice.azurewebsites.net/api/Doc',
-                    type: 'post',
-                    data: JSON.stringify(d),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true, 
+                    type: 'POST',
+                    data: d,
+                    dataType: 'json',
                     success: function (data) {
-                        $('#lastphoto').html(data.msg);
+                        $('#pictureDisplayed').html("<div class='alert'>Data saved successfully!</div>");
                     },
-                    
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        $('#pictureDisplayed').html(xhr.status.toString() + thrownError + ajaxOptions);
+                        //alert(xhr.status);
+                        //alert(thrownError);
+                        
+                    }
+
                 });
-                 
-            }
+
+            });
             
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         }
