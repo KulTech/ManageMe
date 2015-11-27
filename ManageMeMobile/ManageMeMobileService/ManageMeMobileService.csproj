@@ -187,6 +187,7 @@
     <Compile Include="Controllers\DocController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PropertiesController.cs" />
     <Compile Include="Controllers\ShowDocsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Helper\FixBase64Helper.cs" />
@@ -197,6 +198,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="DBContext\ManageMeMobileDB.cs" />
+    <Compile Include="Models\Properties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\DocumentsViewModel.cs" />
   </ItemGroup>
@@ -255,6 +257,11 @@
     <Content Include="Views\ShowDocs\Details.cshtml" />
     <Content Include="Views\ShowDocs\Edit.cshtml" />
     <Content Include="Views\ShowDocs\Index.cshtml" />
+    <Content Include="Views\Properties\Create.cshtml" />
+    <Content Include="Views\Properties\Delete.cshtml" />
+    <Content Include="Views\Properties\Details.cshtml" />
+    <Content Include="Views\Properties\Edit.cshtml" />
+    <Content Include="Views\Properties\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

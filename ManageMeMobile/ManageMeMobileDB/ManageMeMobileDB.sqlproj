@@ -57,11 +57,13 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\table" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Documents.sql" />
-    <Build Include="AppLog.sql" />
-    <Build Include="Properties.sql" />
+    <Build Include="dbo\table\AppLog.sql" />
+    <Build Include="dbo\table\Documents.sql" />
+    <Build Include="dbo\table\Properties.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ManageMeMobileDB.publish.xml" />

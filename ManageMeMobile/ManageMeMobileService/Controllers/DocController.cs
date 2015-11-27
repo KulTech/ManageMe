@@ -18,6 +18,12 @@ namespace ManageMeMobileService.Controllers
         private ManageMeMobileDB db = new ManageMeMobileDB();
 
         // GET: api/Doc
+        [HttpGet]
+        public IQueryable<Properties> GetProperties()
+        {
+            return db.Properties; 
+        }
+
         public IQueryable<Documents> GetDocuments()
         {
             return db.Documents;

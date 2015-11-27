@@ -14,6 +14,12 @@ module ManageMeMobile {
             // Handle the Cordova pause and resume events
             document.addEventListener('pause', onPause, false);
             document.addEventListener('resume', onResume, false);
+            
+            $.getJSON("http://managememobileservice.azurewebsites.net/api/Doc/GetProperties", function (data) {
+                $.each(data, function (index) {
+                    $("#sltProperties").append('<option value="' + data[index].Id + '">' + data[index].Name+'</option>');
+                });
+            }); 
             var imageLocation = ""; 
             document.getElementById("btnTakePicture").onclick = function () {
                 navigator.camera.getPicture(function (imageUri) {
@@ -45,7 +51,7 @@ module ManageMeMobile {
                 };
 
                 $.ajax({
-                    url: 'http://managememobileservice.azurewebsites.net/api/Doc',
+                    url: 'http://managememobileservice.azurewebsites.net/api/Doc/PostDocuments',
                     type: 'POST',
                     data: d,
                     dataType: 'json',

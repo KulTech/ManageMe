@@ -14,6 +14,7 @@ namespace ManageMeMobileService
 
         public virtual DbSet<Documents> Documents { get; set; }
         public virtual DbSet<AppLog> AppLog { get; set; }
+        public virtual DbSet<Properties> Properties { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -15,6 +15,11 @@ var ManageMeMobile;
             // Handle the Cordova pause and resume events
             document.addEventListener('pause', onPause, false);
             document.addEventListener('resume', onResume, false);
+            $.getJSON("http://managememobileservice.azurewebsites.net/api/Doc/GetProperties", function (data) {
+                $.each(data, function (index) {
+                    $("#sltProperties").append('<option value="' + data[index].Id + '">' + data[index].Name + '</option>');
+                });
+            });
             var imageLocation = "";
             document.getElementById("btnTakePicture").onclick = function () {
                 navigator.camera.getPicture(function (imageUri) {
@@ -44,12 +49,12 @@ var ManageMeMobile;
                     fileContent: dataURL
                 };
                 $.ajax({
-                    url: 'http://managememobileservice.azurewebsites.net/api/Doc',
+                    url: 'http://managememobileservice.azurewebsites.net/api/Doc/PostDocuments',
                     type: 'POST',
                     data: d,
                     dataType: 'json',
                     success: function (data) {
-                        $('#pictureDisplayed').html("<div class='alert'>Data saved successfully!</div>");
+                        $('#pictureDisplayed').html("<div class='info'>Data saved successfully!</div>");
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         $('#pictureDisplayed').html(xhr.status.toString() + thrownError + ajaxOptions);
