@@ -95,6 +95,7 @@ namespace ManageMeMobileService.Controllers
             d.Title = documents.Title;
             d.Notes = documents.Notes;
             d.Date = documents.Date;
+                d.PropertyId = documents.PropertyId; 
             string base64 = documents.fileContent.Replace("data:image/jpeg;base64,","");// load base 64 code to this variable from js 
             Byte[] bitmapData = new Byte[base64.Length];
             bitmapData = Convert.FromBase64String(FixBase64Helper.FixBase64ForImage(base64));

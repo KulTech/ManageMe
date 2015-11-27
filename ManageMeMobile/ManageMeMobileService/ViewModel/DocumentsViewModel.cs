@@ -21,5 +21,7 @@
         public string Notes { get; set; }
 
         public string fileContent { get; set; }
+
+        public int PropertyId { get; set; }
     }
 }

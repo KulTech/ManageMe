@@ -21,5 +21,7 @@ namespace ManageMeMobileService
         public string Notes { get; set; }
 
         public Byte[] fileContent { get; set;}
+
+        public int PropertyId { get; set; }
     }
 }

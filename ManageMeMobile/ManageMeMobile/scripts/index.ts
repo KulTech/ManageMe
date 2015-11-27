@@ -47,6 +47,7 @@ module ManageMeMobile {
                     Title: $('#txtTitle').val(),
                     Notes: $('#txtNotes').val(),
                     Date: $('#txtDate').val(),
+                    PropertyId: jQuery("#sltProperties option:selected").val(),
                     fileContent: dataURL
                 };
 
