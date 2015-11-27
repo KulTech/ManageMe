@@ -22,31 +22,27 @@ var ManageMeMobile;
             });
             var imageLocation = "";
             document.getElementById("btnTakePicture").onclick = function () {
-                navigator.camera.getPicture(function (imageUri) {
-                    imageLocation = imageUri;
-                    var lastphoto = document.getElementById("pictureDisplayed");
-                    lastphoto.innerHTML = "<img src='" + imageUri + "', style = 'width:75%;'/>";
-                }, null, null);
+                navigator.camera.getPicture(function (imageData) {
+                    var image = document.getElementById("pictureDisplayed");
+                    imageLocation = "data:image/jpeg;base64," + imageData;
+                    $("#DispArea").append("<img src= '" + imageLocation + "', style = 'width:95%;height:75px;' />");
+                }, null, {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    saveToPhotoAlbum: false
+                });
             };
             document.getElementById("btnClearPicture").onclick = function () {
-                var lastphoto = document.getElementById("pictureDisplayed");
-                lastphoto.innerHTML = "";
+                $("#DispArea").html("");
             };
             $("#btnSave").click(function () {
                 $("#form1").validate();
-                var canvas = document.createElement("canvas");
-                var img1 = document.createElement("img");
-                img1.setAttribute('src', imageLocation);
-                canvas.width = img1.width;
-                canvas.height = img1.height;
-                var ctx = canvas.getContext("2d");
-                ctx.drawImage(img1, 0, 0);
-                var dataURL = canvas.toDataURL("image/jpeg");
                 var d = {
                     Title: $('#txtTitle').val(),
                     Notes: $('#txtNotes').val(),
                     Date: $('#txtDate').val(),
-                    fileContent: dataURL
+                    PropertyId: jQuery("#sltProperties option:selected").val(),
+                    fileContent: imageLocation
                 };
                 $.ajax({
                     url: 'http://managememobileservice.azurewebsites.net/api/Doc/PostDocuments',
@@ -54,14 +50,20 @@ var ManageMeMobile;
                     data: d,
                     dataType: 'json',
                     success: function (data) {
-                        $('#pictureDisplayed').html("<div class='info'>Data saved successfully!</div>");
+                        $('#DispArea').html("<div class='info'>Data saved successfully!</div>");
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
-                        $('#pictureDisplayed').html(xhr.status.toString() + thrownError + ajaxOptions);
+                        $('#DispArea').html(xhr.status.toString() + thrownError + ajaxOptions);
                         //alert(xhr.status);
                         //alert(thrownError);
                     }
                 });
+                //remove the picture
+                //navigator.camera.cleanup(function () {
+                //    alert("cleaned up successfully");
+                //}, function (message) {
+                //    alert("cleaned up failed" + message);
+                //});
             });
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         }
