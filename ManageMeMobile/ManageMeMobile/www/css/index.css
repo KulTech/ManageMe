@@ -11,6 +11,10 @@ div {
     margin-bottom:5px;
 }
 .alert{
-    font:bold 12px arial large;
+    font:bold x-large;
     color:red;
+}
+.info {
+    font:bold x-large; 
+    color:green;
 }

@@ -29,7 +29,6 @@ module ManageMeMobile {
             
             $("#btnSave").click(function () { 
                 $("#form1").validate();
-                alert(imageLocation); 
                 var canvas = document.createElement("canvas");
                 var img1 = document.createElement("img");
                 img1.setAttribute('src', imageLocation); 
@@ -38,7 +37,6 @@ module ManageMeMobile {
                 var ctx = canvas.getContext("2d");
                 ctx.drawImage(img1, 0, 0);
                 var dataURL = canvas.toDataURL("image/jpeg");
-                alert("from getbase64 function" + dataURL);
                 var d = {
                     Title: $('#txtTitle').val(),
                     Notes: $('#txtNotes').val(),
@@ -52,7 +50,7 @@ module ManageMeMobile {
                     data: d,
                     dataType: 'json',
                     success: function (data) {
-                        $('#pictureDisplayed').html("<div class='alert'>Data saved successfully!</div>");
+                        $('#pictureDisplayed').html("<div class='info'>Data saved successfully!</div>");
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         $('#pictureDisplayed').html(xhr.status.toString() + thrownError + ajaxOptions);

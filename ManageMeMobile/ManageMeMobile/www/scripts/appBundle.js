@@ -29,7 +29,6 @@ var ManageMeMobile;
             };
             $("#btnSave").click(function () {
                 $("#form1").validate();
-                alert(imageLocation);
                 var canvas = document.createElement("canvas");
                 var img1 = document.createElement("img");
                 img1.setAttribute('src', imageLocation);
@@ -38,7 +37,6 @@ var ManageMeMobile;
                 var ctx = canvas.getContext("2d");
                 ctx.drawImage(img1, 0, 0);
                 var dataURL = canvas.toDataURL("image/jpeg");
-                alert("from getbase64 function" + dataURL);
                 var d = {
                     Title: $('#txtTitle').val(),
                     Notes: $('#txtNotes').val(),
