@@ -14,18 +14,21 @@ module ManageMeMobile {
             // Handle the Cordova pause and resume events
             document.addEventListener('pause', onPause, false);
             document.addEventListener('resume', onResume, false);
-            
+         
             $.getJSON("http://managememobileservice.azurewebsites.net/api/Doc/GetProperties", function (data) {
                 $.each(data, function (index) {
                     $("#sltProperties").append('<option value="' + data[index].Id + '">' + data[index].Name+'</option>');
                 });
             }); 
+
+          
             var imageLocation = ""; 
             document.getElementById("btnTakePicture").onclick = function () {
                 navigator.camera.getPicture(function (imageData) {
                     var image = document.getElementById("pictureDisplayed");
                     imageLocation = "data:image/jpeg;base64," + imageData;
-                    $("#DispArea").append("<img src= '" + imageLocation + "', style = 'width:95%;height:75px;' />"); 
+                    $("#DispArea").html("");
+                    $("#DispArea").append("<img src= '" + imageLocation + "', style = 'width:95%;height:250px' />"); 
               }, null, {
                     quality: 50,
                     destinationType: Camera.DestinationType.DATA_URL,
@@ -36,32 +39,39 @@ module ManageMeMobile {
                 $("#DispArea").html(""); 
             }
             
-            $("#btnSave").click(function () { 
-                $("#form1").validate();
-                var d = {
-                    Title: $('#txtTitle').val(),
-                    Notes: $('#txtNotes').val(),
-                    Date: $('#txtDate').val(),
-                    PropertyId: jQuery("#sltProperties option:selected").val(),
-                    fileContent: imageLocation
-                };
+            $("#btnSave").click(function () {
+                if (imageLocation.length < 1) {
+                    $("#DispArea").html("<div class='alert'>Image is required</div>");
+                    return;
+                }
+                if ($("#form1").valid())
+                {
+                    var d = {
+                        Title: $('#txtTitle').val(),
+                        Notes: $('#txtNotes').val(),
+                        Date: $('#txtDate').val(),
+                        PropertyId: jQuery("#sltProperties option:selected").val(),
+                        fileContent: imageLocation
+                    };
 
-                $.ajax({
-                    url: 'http://managememobileservice.azurewebsites.net/api/Doc/PostDocuments',
-                    type: 'POST',
-                    data: d,
-                    dataType: 'json',
-                    success: function (data) {
-                        $('#DispArea').html("<div class='info'>Data saved successfully!</div>");
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        $('#DispArea').html(xhr.status.toString() + thrownError + ajaxOptions);
-                        //alert(xhr.status);
-                        //alert(thrownError);
+                    $.ajax({
+                        url: 'http://managememobileservice.azurewebsites.net/api/Doc/PostDocuments',
+                        type: 'POST',
+                        data: d,
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#DispArea').html("<div class='info'>Data saved successfully!</div>");
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            $('#DispArea').html(xhr.status.toString() + thrownError + ajaxOptions);
+                            //alert(xhr.status);
+                            //alert(thrownError);
                         
-                    }
+                        }
 
-                });
+                    });
+                }
+               
                 //remove the picture
                 //navigator.camera.cleanup(function () {
                 //    alert("cleaned up successfully");
