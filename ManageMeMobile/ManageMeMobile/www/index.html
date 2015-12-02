@@ -12,11 +12,13 @@
 
     <!-- ManageMeMobile references -->
     <link href="css/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/mprogress.min.css" rel="stylesheet"/>
     <link href="css/index.css" rel="stylesheet" />
     <!-- Cordova reference, this is added to your app when it's built. -->
     <script src="cordova.js"></script>
     <script src="scripts/platformOverrides.js"></script>
     <script src="scripts/appBundle.js"></script>
+    <script src=" scripts/mprogress.min.js"></script>
     
     <script src="scripts/jquery-1.9.1.min.js"></script>
     <script src="scripts/jquery.validate.min.js"></script>
@@ -31,6 +33,9 @@
     <h2>ManageMe Receipt Scan</h2>
     
         <div><input type="button" value="Save" id="btnSave" class="largebutton" /></div>
+        <div id="load" hidden>
+            <img src="http://jimpunk.net/Loading/wp-content/uploads/loading1.gif" width="50%" height="250px" />
+        </div>
         <div class="row">
             <div class="col-xs-3">Property:</div>
             <div class="col-xs-6"><select id="sltProperties">

@@ -33,15 +33,13 @@
         <dd>
             @Html.DisplayFor(model => model.Notes)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.fileContent)
-        </dt>
-
+        <dt></dt>
+        <dd>
+            <img src="data:image/jpeg;base64,@System.Convert.ToBase64String(Model.fileContent)" width="75%" height="400px" />     
+        </dd>
     </dl>
 </div>
-<p>
-    <img src="data:image/jpeg;base64,@System.Convert.ToBase64String(Model.fileContent)" width="80" height="80" />     
-  
-</p>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 

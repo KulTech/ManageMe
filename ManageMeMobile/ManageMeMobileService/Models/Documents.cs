@@ -23,5 +23,7 @@ namespace ManageMeMobileService
         public Byte[] fileContent { get; set;}
 
         public int PropertyId { get; set; }
+
+        public virtual Properties Property { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace ManageMeMobileService.Controllers
         // GET: ShowDocs
         public ActionResult Index()
         {
-            return View(db.Documents.ToList());
+            return View(db.Documents.ToList().OrderBy(x=>x.Property.Id));
         }
 
         // GET: ShowDocs/Details/5

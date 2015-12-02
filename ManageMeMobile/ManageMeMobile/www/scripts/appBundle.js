@@ -35,6 +35,7 @@ var ManageMeMobile;
             };
             document.getElementById("btnClearPicture").onclick = function () {
                 $("#DispArea").html("");
+                imageLocation = "";
             };
             $("#btnSave").click(function () {
                 if (imageLocation.length < 1) {
@@ -54,8 +55,12 @@ var ManageMeMobile;
                         type: 'POST',
                         data: d,
                         dataType: 'json',
+                        beforeSend: function () {
+                            $('#load').show(); /*showing  a div with spinning image */
+                        },
                         success: function (data) {
                             $('#DispArea').html("<div class='info'>Data saved successfully!</div>");
+                            $('#load').hide();
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
                             $('#DispArea').html(xhr.status.toString() + thrownError + ajaxOptions);

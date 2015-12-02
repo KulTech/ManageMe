@@ -23,6 +23,7 @@ module ManageMeMobile {
 
           
             var imageLocation = ""; 
+            var mprogress = new Mprogress();
             document.getElementById("btnTakePicture").onclick = function () {
                 navigator.camera.getPicture(function (imageData) {
                     var image = document.getElementById("pictureDisplayed");
@@ -37,6 +38,7 @@ module ManageMeMobile {
             }
             document.getElementById("btnClearPicture").onclick = function () {
                 $("#DispArea").html(""); 
+                imageLocation = ""; 
             }
             
             $("#btnSave").click(function () {
@@ -59,8 +61,12 @@ module ManageMeMobile {
                         type: 'POST',
                         data: d,
                         dataType: 'json',
+                        beforeSend: function () {
+                            $('#load').show();    /*showing  a div with spinning image */
+                        },
                         success: function (data) {
                             $('#DispArea').html("<div class='info'>Data saved successfully!</div>");
+                            $('#load').hide();
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
                             $('#DispArea').html(xhr.status.toString() + thrownError + ajaxOptions);
