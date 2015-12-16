@@ -1,0 +1,45 @@
+﻿@model ManageMeMobileService.Documents
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Documents</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+        <dt></dt>
+        <dd>
+            <img src="data:image/jpeg;base64,@System.Convert.ToBase64String(Model.fileContent)" width="75%" height="400px" />     
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

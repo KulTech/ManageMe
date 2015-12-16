@@ -23,7 +23,7 @@ module ManageMeMobile {
 
           
             var imageLocation = ""; 
-            var mprogress = new Mprogress();
+            //var mprogress = new Mprogress();
             document.getElementById("btnTakePicture").onclick = function () {
                 navigator.camera.getPicture(function (imageData) {
                     var image = document.getElementById("pictureDisplayed");
@@ -69,6 +69,7 @@ module ManageMeMobile {
                             $('#load').hide();
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
+                            debugger
                             $('#DispArea').html(xhr.status.toString() + thrownError + ajaxOptions);
                             //alert(xhr.status);
                             //alert(thrownError);
