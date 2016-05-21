@@ -4,12 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using ManageMeDomainEntity; 
+
 namespace ManageMe.Controllers
 {
     public class HomeController : Controller
     {
+        private ManageMeModel db = new ManageMeModel();
+       
         public ActionResult Index()
         {
+       
+       
             return View();
         }
 

@@ -9,13 +9,14 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ManageMeMobileService;
+using ManageMeDomainEntity; 
 
 namespace ManageMeMobileService.Controllers
 {
     
     public class AppLogsController : ApiController
     {
-        private ManageMeMobileDB db = new ManageMeMobileDB();
+        private ManageMeModel db = new ManageMeModel();
 
         // GET: api/AppLogs
         public IQueryable<AppLog> GetAppLog()

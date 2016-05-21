@@ -12,6 +12,7 @@ using System.Web.Http.ModelBinding;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Routing;
 using ManageMeMobileService;
+using ManageMeDomainEntity; 
 
 namespace ManageMeMobileService.Controllers
 {
@@ -27,7 +28,7 @@ namespace ManageMeMobileService.Controllers
     */
     public class DocumentsController : ODataController
     {
-        private ManageMeMobileDB db = new ManageMeMobileDB();
+        private ManageMeModel db = new ManageMeModel();
 
         // GET: odata/Documents
         [EnableQuery]

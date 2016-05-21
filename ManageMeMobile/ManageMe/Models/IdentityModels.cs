@@ -21,7 +21,7 @@ namespace ManageMe.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("ManageMeModel", throwIfV1Schema: false)
         {
         }
 

@@ -8,20 +8,21 @@
 
     public partial class DocumentsViewModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [StringLength(250)]
-        public string Title { get; set; }
-
         [Column(TypeName = "date")]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         [StringLength(500)]
         public string Notes { get; set; }
-
+       
         public string fileContent { get; set; }
-
+        [Required]
         public int PropertyId { get; set; }
+        [Required]
+        public decimal amount { get; set; }
+        [Required]
+        public int typeid { get; set; }
+        public int VendorId { get; set; }
     }
 }

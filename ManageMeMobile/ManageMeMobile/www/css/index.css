@@ -21,3 +21,7 @@ div {
 div.ui-datepicker{
  font-size:10px;
 }
+option.bravo
+    {
+        font-style: italic;
+    }

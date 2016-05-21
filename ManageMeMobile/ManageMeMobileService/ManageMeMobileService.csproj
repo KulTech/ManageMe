@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ManageMeMobileService</RootNamespace>
     <AssemblyName>ManageMeMobileService</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -183,24 +187,16 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AppLogsController.cs" />
     <Compile Include="Controllers\DocController.cs" />
-    <Compile Include="Controllers\DocumentsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PropertiesController.cs" />
-    <Compile Include="Controllers\ShowDocsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\StockTestController.cs" />
     <Compile Include="Helper\FixBase64Helper.cs" />
-    <Compile Include="Models\AppLog.cs" />
-    <Compile Include="Models\database_firewall_rules.cs" />
-    <Compile Include="Models\Documents.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="DBContext\ManageMeMobileDB.cs" />
-    <Compile Include="Models\Properties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\DocumentsViewModel.cs" />
+    <Compile Include="ViewModel\ExpenseTypeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -231,6 +227,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Properties\PublishProfiles\ManageMeMobileService.pubxml" />
+    <None Include="Properties\PublishProfiles\ManageMeMobileServiceLocal.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -247,23 +244,7 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\ShowDocs\Create.cshtml" />
-    <Content Include="Views\ShowDocs\Delete.cshtml" />
-    <Content Include="Views\ShowDocs\Details.cshtml" />
-    <Content Include="Views\ShowDocs\Edit.cshtml" />
-    <Content Include="Views\ShowDocs\Index.cshtml" />
-    <Content Include="Views\Properties\Create.cshtml" />
-    <Content Include="Views\Properties\Delete.cshtml" />
-    <Content Include="Views\Properties\Details.cshtml" />
-    <Content Include="Views\Properties\Edit.cshtml" />
-    <Content Include="Views\Properties\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -271,6 +252,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ManageMeDomainEntity\ManageMeDomainEntity.csproj">
+      <Project>{90459fb9-7a55-4e69-8ac1-fa99e94aaa40}</Project>
+      <Name>ManageMeDomainEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

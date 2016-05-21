@@ -24,10 +24,12 @@
     <allow-intent href="itms-apps:*" />
   </platform>
   <platform name="android">
-    <icon src="res/icons/android/icon-36-ldpi.png" density="ldpi" />
-    <icon src="res/icons/android/icon-48-mdpi.png" density="mdpi" />
-    <icon src="res/icons/android/icon-72-hdpi.png" density="hdpi" />
-    <icon src="res/icons/android/icon-96-xhdpi.png" density="xhdpi" />
+    <icon src="res/icons/android/ApplicationIcon.png" density="ldpi" />
+    <icon src="res/icons/android/ApplicationIcon.png" density="mdpi" />
+    <icon src="res/icons/android/ApplicationIcon.png" density="hdpi" />
+    <icon src="res/icons/android/ApplicationIcon.png" density="xhdpi" />
+    <icon src="res/icons/android/ApplicationIcon.png" width="62" height="62" />
+    <icon src="res/icons/android/Background.png" width="173" height="173" />
   </platform>
   <platform name="ios">
     <!-- iOS 8.0+ -->
@@ -104,6 +106,9 @@
   <platform name="wp8">
     <splash src="res/screens/wp8/SplashScreenImage.jpg" width="480" height="800" />
   </platform>
-  <vs:plugin name="cordova-plugin-camera" version="1.2.0" />
-  <vs:plugin name="cordova-plugin-media-capture" version="1.0.1" />
+  <plugin name="cordova-plugin-file" version="3.0.0" />
+  <plugin name="cordova-plugin-camera" version="1.2.0" />
+  <plugin name="cordova-plugin-media-capture" version="1.0.1" />
+  <plugin name="cordova-plugin-email" version="1.1.0" src="https://github.com/hypery2k/cordova-email-plugin.git" />
+  <plugin name="com.jcjee.plugins.emailcomposer" version="1.4.6" src="https://github.com/jcjee/email-composer.git" />
 </widget>

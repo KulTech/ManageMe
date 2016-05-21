@@ -6,14 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ManageMe.Models; 
+using ManageMeDomainEntity; 
 
 
 namespace ManageMe.Controllers
 {
     public class PropertiesController : Controller
     {
-        private ManageMeMobileDB db = new ManageMeMobileDB();
+        private ManageMeModel db = new ManageMeModel();
 
         // GET: Properties
         public ActionResult Index()

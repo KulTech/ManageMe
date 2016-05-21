@@ -30,5 +30,23 @@
         },
         "is_top_level": false,
         "variables": {}
+    },
+    "cordova-plugin-email": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hypery2k/cordova-email-plugin.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jcjee.plugins.emailcomposer": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jcjee/email-composer.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

@@ -27,40 +27,94 @@
 </head>
 <body>
     <form id="form1">
-       
-        <!--<div class="col-xs-12"><select name="property" id="sltProperties" required /></div>-->
-    <div class="container" style="font-size:x-large">
-    <h2>ManageMe Receipt Scan</h2>
-    
-        <div><input type="button" value="Save" id="btnSave" class="largebutton" /></div>
+       <input type="hidden" id="docId" />
+    <div class="container text-left" style="font-size:small; background-color:lightgray">
+        <div class="text-center page-header" style="text-align:center; margin-top:10px; margin-bottom:10px; background-color:goldenrod; color:black"><div style="display:inline-block;"><h4><b>ManageMe Receipt Scan</b></h4></div></div>
+        <div><button type="button" class="btn" id="btnSave" style="background-color:goldenrod">Save</button>
+            <button type="button" class="btn" id="btnUpdate" style="background-color:goldenrod; visibility:hidden">Update</button>
+            <button type="button" class="btn" id="btnNew" style="background-color:goldenrod; visibility:hidden">Add New</button>
+        </div>
         <div id="load" hidden>
-            <img src="http://jimpunk.net/Loading/wp-content/uploads/loading1.gif" width="50%" height="250px" />
         </div>
         <div class="row">
-            <div class="col-xs-3">Property:</div>
+            <div class="col-xs-2" style="caption-side">Property:</div>
             <div class="col-xs-6"><select id="sltProperties">
+                <option value="1">Vienna</option>
+                <option value="2">Bolton</option>
+                <option value="3">Thames</option>
+                <option value="4">AisleWay</option>
+                <option value="5">Robertson</option>
                 </select></div>
         </div>
-     <div class="row">
+        <div class="row">
+            <div class="col-xs-2">Type:</div>
+            <div class="col-xs-6">
+                <select id="sltETypes">
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">Sub:</div>
+            <div class="col-xs-6">
+                <select id="sltSub">
+                </select><i class="glyphicon glyphicon-question-sign"></i>
+            </div>
+        </div>
+          <div class="row">
         <div class="col-xs-2">Date:</div>
-        <div class="col-xs-6"><input type="text" name="txtDate" id="txtDate" data-rule-required="true" data-rule-date="true"/></div>
-    </div>
-        <div class="row">
-            <div class=" col-xs-2">Title:</div>
-            <div class="col-xs-6"><input type="text" name="txtTitle" id="txtTitle" data-rule-required="true" /></div>
+        <div class="col-xs-6"><input type="date" name="txtDate" id="txtDate" data-rule-required="true" data-rule-date="true"/></div>
         </div>
         <div class="row">
-            <div class="col-xs-2">Notes:</div>
-            <div class="col-xs-6"><textarea id="txtNotes" name="txtNotes" cols="30" rows="5" data-rule-required="true"></textarea></div>
+            <div class="col-xs-2">Amount:</div>
+            <div class="col-xs-6"><input type="number"txtAmount" id="txtAmount" data-rule-required="true" data-rule-number="true" /></div>
         </div>
-           
         <div class="row">
-            <div class="col-xs-6"><input type="button" value="Take Picture" id="btnTakePicture" /></div>
-            <div class="col-xs-6"><input type="button" value="Clear Picture" id="btnClearPicture" /></div>
+            <div class="col-xs-2">To:</div>
+            <div class="col-xs-6">
+                <select id="sltVendor">
+                </select>
+            </div>
         </div>
+        <div id="VendorDetail" hidden style="border:groove; background-color:lightblue;padding-left:5px; padding-right:5px">
+            <div class="row" style="padding-top:10px">
+                <div class="col-xs-2">Name:</div>
+                <div class="col-xs-6">
+                    <input type="text" id="txtVName" class="vtxt"/>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-xs-2">Phone:</div>
+                    <div class="col-xs-6">
+                        <input type="tel" id="txtVPhone" class="vtxt"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">location:</div>
+                    <div class="col-xs-6">
+                        <input type="text" id="txtVlocation" class="vtxt" />
+                    </div>
+                </div>
+ 
+                <div class="row">
+                    <div class="col-xs-2">email:</div>
+                    <div class="col-xs-6">
+                        <input type="email" id="txtVemail" class="vtxt" />
+                    </div>
+                </div>
+            <div style="text-align:right"><input type="button" id="btnVSave" value="Add" /></div>
 
-        <div id="DispArea" name="DispArea" data-rule-required="true"></div>
-       </div>
+            </div>
+                    <div class="row">
+                        <div class="col-xs-2">Notes:</div>
+                        <div class="col-xs-6"><textarea id="txtNotes" name="txtNotes" cols="30" rows="5" data-rule-required="true"></textarea></div>
+                    </div>
+                    <div class="row text-left">
+                        <div class="col-xs-6"><input type="button" value="Take Picture" id="btnTakePicture" /></div>
+                        <div class="col-xs-6"><input type="button" value="Clear Picture" id="btnClearPicture" /></div>
+                    </div>
+
+                    <div id="DispArea" name="DispArea" data-rule-required="true"></div>
+                </div>
         </form>
 </body>
 
