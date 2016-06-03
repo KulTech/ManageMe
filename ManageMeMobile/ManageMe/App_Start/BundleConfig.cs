@@ -22,6 +22,22 @@ namespace ManageMe
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+
+                   "~/Scripts/kendoJS/Kendo.all.min.js",
+                   "~/Scripts/kendoJS/kendo.aspnetmvc.min.js",
+                   "~/Scripts/kendoJS/kendo.timezones.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/kendoGrid").Include(
+                        "~/Scripts/kendoJS/console.js",
+                        "~/Scripts/kendoJS/prettify.js"
+                        ));
+
+            bundles.Add(new StyleBundle("~/Content/kendostyles/css").Include(
+                   "~/Content/kendostyles/kendo.common.min.css",
+                   "~/Content/kendostyles/kendo.rtl.min.css",
+                   "~/Content/kendostyles/kendo.default.min.css"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

@@ -64,6 +64,10 @@ namespace ManageMeMobileService.Controllers
             return Ok(documents);
         }
 
+        public IQueryable<Documents> GetDocumentsByProperty (int id)
+        {
+            return db.Documents.Where(x => x.PropertyId == id); 
+        }
         // PUT: api/Doc/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDocuments(int id, Documents documents)
@@ -210,6 +214,7 @@ namespace ManageMeMobileService.Controllers
             base.Dispose(disposing);
         }
 
+       
         private bool DocumentsExists(int id)
         {
             return db.Documents.Count(e => e.Id == id) > 0;
